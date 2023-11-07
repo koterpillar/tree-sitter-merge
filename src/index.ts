@@ -1,6 +1,7 @@
 import Parser, { SyntaxNode } from "tree-sitter";
 
 import JSON from "tree-sitter-json";
+import { map3 } from "./utils";
 
 type Language = "json";
 
@@ -73,9 +74,12 @@ export function merge(
   const parser = new Parser();
   parser.setLanguage(languages[language]);
 
-  const baseNode = parser.parse(base).rootNode;
-  const leftNode = parser.parse(left).rootNode;
-  const rightNode = parser.parse(right).rootNode;
+  const [baseNode, leftNode, rightNode] = map3(
+    (s) => parser.parse(s).rootNode,
+    base,
+    left,
+    right
+  );
 
   const resultNode = mergeNodes(language, baseNode, leftNode, rightNode);
 
