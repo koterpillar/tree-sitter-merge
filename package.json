@@ -1,8 +1,19 @@
 {
   "name": "tree-sitter-merge",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:koterpillar/tree-sitter-merge.git",
   "author": "Alexey Kotlyarov <a@koterpillar.com>",
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "tree-sitter": "^0.20.6",
+    "tree-sitter-json": "^0.20.1"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.3",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "tsc"
+  }
 }
