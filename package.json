@@ -1,0 +1,8 @@
+{
+  "name": "tree-sitter-merge",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:koterpillar/tree-sitter-merge.git",
+  "author": "Alexey Kotlyarov <a@koterpillar.com>",
+  "license": "GPL-3.0-or-later"
+}
