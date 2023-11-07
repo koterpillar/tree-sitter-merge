@@ -22,6 +22,38 @@ function prettyPrint(node: SyntaxNode, level = 0): void {
   }
 }
 
+type NodeKind = NodeKindPrimitive | NodeKindChildren;
+
+type NodeKindPrimitive = {
+  readonly kind: "primitive";
+};
+
+const PRIMITIVE: NodeKindPrimitive = { kind: "primitive" };
+
+type NodeKindChildren = {
+  readonly kind: "children";
+  readonly childKey: (node: SyntaxNode) => string | null;
+};
+
+const CHILDREN_SIMPLE: NodeKindChildren = {
+  kind: "children",
+  childKey: () => null,
+};
+
+export function nodeKind(language: Language, node: SyntaxNode): NodeKind {
+  if (!node.isNamed || node.type === "string" || node.type === "number") {
+    return PRIMITIVE;
+  }
+  if (node.type === "object") {
+    return {
+      kind: "children",
+      childKey: (node: SyntaxNode) =>
+        node.type === "pair" ? node.children[0].text : null,
+    };
+  }
+  return CHILDREN_SIMPLE;
+}
+
 export function mergeNodes(
   language: Language,
   base: SyntaxNode,
