@@ -1,0 +1,16 @@
+{
+  "common": "value",
+  "list": [
+    "one",
+    "two",
+    "e",
+    "three",
+    "four"
+  ],
+  "map": {
+    "one": 1,
+    "two": 22,
+    "three": 3,
+    "four": 4
+  }
+}
